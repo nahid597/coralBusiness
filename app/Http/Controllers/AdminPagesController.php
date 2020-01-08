@@ -12,11 +12,20 @@ class AdminPagesController extends Controller
 {
     //
     public function index(){
-        return view('admin.index');
+
+        $products = Products::orderBy('id', 'desc')->get();
+
+        return view('admin.index')->with('products', $products);
     }
 
     public function product_create(){
         return view('admin.pages.product.create');
+    }
+
+    public function product_edit($id)
+    {
+        $product = Products::find($id);
+        return view('admin.pages.product.edit')->with('product', $product);
     }
 
     public function product_store(Request $request)
@@ -63,5 +72,23 @@ class AdminPagesController extends Controller
         }
     }
       return redirect()->route('admin.index');
+    }
+
+
+    public function product_update(Request $request, $id)
+    {
+        $request->validate([
+            'title'         => 'required|max:150',
+            'description'     => 'required',
+            'price'             => 'required|numeric',
+            'quantity'             => 'required|numeric',
+        ]);
+        $product = Products::find($id);
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->save();
+        return redirect()->route('admin.index');
     }
 }

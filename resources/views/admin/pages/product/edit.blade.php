@@ -5,30 +5,30 @@
     <div class="content-wrapper">
 
       <div class="card">
-        <div id= "AddProduct" class="card-header">
-          <b>Add Product</b>
+      <div id= "AddProduct" class="card-header">
+          <b>Edit Product</b>
           <a id="cancelProductButton" class="btn btn-warning" href = "{{route('admin.index')}}">Cancel</a>
         </div>
         <div class="card-body">
-          <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('admin.product.update', $product->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             @include('admin.partials.messages')
             <div class="form-group">
               <label for="exampleInputEmail1">Title</label>
-              <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Ex. coral">
+              <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $product->title }}" >
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Description</label>
-              <textarea placeholder="Ex. it's awesome" name="description" rows="6" cols="80" class="form-control"></textarea>
+              <textarea name="description" rows="8" cols="80" class="form-control">{{ $product->description }}</textarea>
 
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Price</label>
-              <input type="number" placeholder="Ex. 50" class="form-control" name="price" id="exampleInputEmail1">
+              <input type="number" class="form-control" name="price" id="exampleInputEmail1" value="{{ $product->price }}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Quantity</label>
-              <input type="number" class="form-control" placeholder="Ex:1" name="quantity" id="exampleInputEmail1">
+              <input type="number" class="form-control" name="quantity" id="exampleInputEmail1" value="{{ $product->quantity }}">
             </div>
             <div class="form-group">
               <label for="product_image">Product Image</label>
@@ -46,7 +46,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Ad Product</button>
+            <button type="submit" class="btn btn-primary">Update Product</button>
           </form>
         </div>
       </div>
