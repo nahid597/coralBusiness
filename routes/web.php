@@ -24,3 +24,11 @@ Route::post('/admin/product/create', 'AdminPagesController@product_store')->name
 Route::post('/admin/product/edit/{id}', 'AdminPagesController@product_update')->name('admin.product.update');
 Route::post('/admin/product/delete/{id}', 'AdminPagesController@product_delete')->name('admin.product.delete');
 Route::get('/search', 'ProductController@search')->name('search');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
