@@ -1,3 +1,3 @@
 <footer id="footer" class="footer-bottom">
-  <p class="text-center">&copy; 2018 All rights reserved | CoralBusiness</p>
+  <p class="text-center">&copy; 2020 All rights reserved | CoralBusiness</p>
 </footer>

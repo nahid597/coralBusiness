@@ -25,3 +25,12 @@
 #cancelProductButton {
     float: right;
 }
+
+#contactPage {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#navbarColor {
+    background: purple;
+}

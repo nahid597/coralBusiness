@@ -25,6 +25,21 @@ class ProductController extends Controller
        return view('pages.product.index')->with('products',$products);
    }
 
+   public function search(Request $request)
+   {
+       $search = $request->search;
+
+       $products = Products::orWhere('title', 'like', '%'.$search.'%') 
+                ->orWhere('description', 'like', '%'.$search.'%')
+                ->orWhere('quantity', 'like', '%'.$search.'%')
+                ->orWhere('price', 'like', '%'.$search.'%')
+                ->orderBy('id','desc')
+                ->paginate(9);
+
+
+        return view('pages.product.search', compact('search', 'products'));
+   }
+
     /**
      * Show the form for creating a new resource.
      *

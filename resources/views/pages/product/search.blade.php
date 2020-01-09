@@ -8,6 +8,7 @@
 
       <div class="col-md-11">
         <div class="widget">
+        <h3><b> Search Results </b></h3>
           <div class="row">
 
             @foreach ($products as $product)

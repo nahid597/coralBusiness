@@ -28,6 +28,20 @@ class AdminPagesController extends Controller
         return view('admin.pages.product.edit')->with('product', $product);
     }
 
+    public function product_delete($id)
+    {
+        $product = Products::find($id);
+        
+        if(!is_null($product))
+        {
+            $product->delete();
+        }
+
+        session()->flash('success', 'Product delete successfully!!');
+
+        return back();
+    }
+
     public function product_store(Request $request)
     {
 
@@ -36,6 +50,7 @@ class AdminPagesController extends Controller
             'description'     => 'required',
             'price'             => 'required|numeric',
             'quantity'             => 'required|numeric',
+            'product_image'       =>'required',
         ]);
 
       $product = new Products;
