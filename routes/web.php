@@ -25,6 +25,22 @@ Route::post('/admin/product/edit/{id}', 'AdminPagesController@product_update')->
 Route::post('/admin/product/delete/{id}', 'AdminPagesController@product_delete')->name('admin.product.delete');
 Route::get('/search', 'ProductController@search')->name('search');
 
+// carts route
+Route::get('/carts', 'CartController@index')->name('carts');
+Route::post('/carts/store', 'CartController@store')->name('carts.store');
+Route::post('/carts/update/{id}', 'CartController@update')->name('carts.update');
+Route::post('/carts/delete/{id}', 'CartController@delete')->name('carts.delete');
+
+// cehckout controller
+
+Route::get('/checkouts', 'CheckoutController@index')->name('checkouts');
+Route::post('/checkouts/store', 'CheckoutController@store')->name('checkouts.store');
+
+
+//order 
+Route::get('/order/success', 'OrderController@index')->name('order.success');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

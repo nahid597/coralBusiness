@@ -32,7 +32,7 @@
                     <p class="card-text">{{$product->description}}</p>
                     <b class="card-text">Taka - {{ $product->price }}</b>
                     <br>
-                    <a href="#" class="btn btn-outline-success">Add to cart</a>
+                    @include('partials.cart-button')
                   </div>
                 </div>
               </div>

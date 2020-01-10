@@ -18,8 +18,9 @@ class CreateAdminTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
-            $table->string('phone');
-            $table->boolean('isAdmin');
+            $table->string('phone')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('type')->default('Super Admin');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Coral</h4>
                   <p class="card-text">Taka - 5000</p>
-                  <a href="#" class="btn btn-outline-success">Add to cart</a>
+                  
                 </div>
               </div>
             </div>
