@@ -13,6 +13,10 @@
     float: right;
 }
 
+#adminGotoHomeButton {
+    float: left;
+}
+
 #AddProduct {
     background-color: rgb(43, 43, 185);
     color: white;

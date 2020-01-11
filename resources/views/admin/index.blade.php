@@ -9,6 +9,7 @@
       <div class="card">
         <div id="AddProduct" class="card-header">
            <b> Welcome to Admin Panel </b>
+           <a id="adminGotoHomeButton" class="btn btn-warning"  href = "{{route('index')}}"> go to home page</a>
               <a id="adminProductCreateButton" class="btn btn-warning"  href = "{{route('admin.product.create')}}"> Add new Product </a>
         </div>
         <div class="card-body">

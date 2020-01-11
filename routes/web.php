@@ -16,9 +16,17 @@ Route::get('/products', 'ProductController@products')->name('products');
 Route::get('/contact', 'ContactController@contact')->name('contact');
 
 // admin section
-Route::get('/admin', 'AdminPagesController@index')->name('admin.index');
-Route::get('/admin/product/create', 'AdminPagesController@product_create')->name('admin.product.create');
-Route::get('/admin/product/edit/{id}', 'AdminPagesController@product_edit')->name('admin.product.edit');
+
+//Route::get('/admin', 'AdminPagesController@index')->name('admin.index');
+// Route::get('/admin/product/create', 'AdminPagesController@product_create')->name('admin.product.create');
+// Route::get('/admin/product/edit/{id}', 'AdminPagesController@product_edit')->name('admin.product.edit');
+
+
+
+// user login
+Route::get('/login', 'LoginController@showLoginFormUser')->name('login');
+
+
 
 Route::post('/admin/product/create', 'AdminPagesController@product_store')->name('admin.product.store');
 Route::post('/admin/product/edit/{id}', 'AdminPagesController@product_update')->name('admin.product.update');
@@ -39,12 +47,16 @@ Route::post('/checkouts/store', 'CheckoutController@store')->name('checkouts.sto
 
 //order 
 Route::get('/order/success', 'OrderController@index')->name('order.success');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/order/success', 'OrderController@update')->name('order.success.update');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Admin login
+Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+Route::post('/admin/login', 'AdminController@login')->name('admin.login.submit');
+Route::get('/admin', 'AdminPagesController@index')->name('admin.index');
+Route::get('/admin/product/create', 'AdminPagesController@product_create')->name('admin.product.create');
+Route::get('/admin/product/edit/{id}', 'AdminPagesController@product_edit')->name('admin.product.edit');
+ 

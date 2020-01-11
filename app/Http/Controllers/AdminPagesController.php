@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Products;
 use App\ProductImage;
+use App\Admin;
 use Image;
+
+use Auth;
 
 class AdminPagesController extends Controller
 {
@@ -15,36 +18,74 @@ class AdminPagesController extends Controller
     {
         $this->middleware('auth');
     }
+     
+
     //
     public function index(){
+        
+        $user = Auth::user();
+        $admin = Admin::where('email', $user->email)->first();
 
-        $products = Products::orderBy('id', 'desc')->get();
+        if(!is_null($admin))
+        {
+            $products = Products::orderBy('id', 'desc')->get();
+             return view('admin.index')->with('products', $products);
+        }
 
-        return view('admin.index')->with('products', $products);
+        return view('pages.fail');
+
+        
     }
 
     public function product_create(){
-        return view('admin.pages.product.create');
+
+        $user = Auth::user();
+        $admin = Admin::where('email', $user->email)->first();
+
+        if(!is_null($admin))
+        {
+            return view('admin.pages.product.create');
+        }
+
+        return view('pages.fail');
     }
 
     public function product_edit($id)
     {
-        $product = Products::find($id);
-        return view('admin.pages.product.edit')->with('product', $product);
+
+        $user = Auth::user();
+        $admin = Admin::where('email', $user->email)->first();
+
+        if(!is_null($admin))
+        {
+            $product = Products::find($id);
+            return view('admin.pages.product.edit')->with('product', $product);
+        }
+
+        return view('pages.fail'); 
     }
 
     public function product_delete($id)
     {
-        $product = Products::find($id);
-        
-        if(!is_null($product))
+
+        $user = Auth::user();
+        $admin = Admin::where('email', $user->email)->first();
+
+        if(!is_null($admin))
         {
-            $product->delete();
+            $product = Products::find($id);
+        
+            if(!is_null($product))
+            {
+                $product->delete();
+            }
+    
+            session()->flash('success', 'Product delete successfully!!');
+    
+            return back();
         }
 
-        session()->flash('success', 'Product delete successfully!!');
-
-        return back();
+        return view('pages.fail'); 
     }
 
     public function product_store(Request $request)
