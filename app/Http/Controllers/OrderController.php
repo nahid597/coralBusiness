@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function update()
     {
         $user = Auth::user();
-        $carts = cart::where('user_id', $user->id);
+        $carts = cart::where('user_id', $user->id)->get();
        dd ("nahid");
         if(!is_null($carts))
         {

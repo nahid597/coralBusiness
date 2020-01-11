@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarColor">
+<nav class="navbar sticky-top sticky-offset navbar-expand-lg navbar-light bg-light" id="navbarColor">
   <div class="container">
 
 

@@ -42,3 +42,21 @@
 .card {
     margin-top: 10px;
 }
+
+.navbar {
+    position: sticky;
+}
+
+.sticky-top {
+    top: 0px;
+}
+
+.carousel-item {
+    height: 450px;
+    width: 100%;
+}
+
+#homeProduct {
+    float: right;
+    color: blue;
+}
